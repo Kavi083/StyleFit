@@ -50,6 +50,42 @@ let cart = [];
 
 // DISPLAY PRODUCTS
 const productList = document.getElementById("product-list");
+// SEARCH AND CATEGORY FILTER
+
+let selectedCategory = "All";
+let searchText = "";
+
+productList.insertAdjacentHTML("beforebegin", `
+    <div class="filter-section">
+
+        <input
+            type="text"
+            id="search-input"
+            placeholder="Search for dresses..."
+        >
+
+        <select id="category-filter">
+            <option value="All">All Categories</option>
+            <option value="Western Wear">Western Wear</option>
+            <option value="Ethnic Wear">Ethnic Wear</option>
+            <option value="Kurtis">Kurtis</option>
+            <option value="Sarees">Sarees</option>
+        </select>
+
+    </div>
+`);
+
+document.getElementById("search-input")
+    .addEventListener("input", function () {
+        searchText = this.value.toLowerCase();
+        displayProducts();
+    });
+
+document.getElementById("category-filter")
+    .addEventListener("change", function () {
+        selectedCategory = this.value;
+        displayProducts();
+    });
 
 function displayProducts() {
     productList.innerHTML = "";
