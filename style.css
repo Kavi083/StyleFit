@@ -1,0 +1,166 @@
+
+/* GENERAL SETTINGS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #fff9f7;
+    color: #442f35;
+}
+
+/* HEADER */
+header {
+    background-color: #f3dadd;
+    text-align: center;
+    padding: 25px;
+}
+
+header h1 {
+    color: #a44760;
+    font-size: 38px;
+    letter-spacing: 2px;
+}
+
+header p {
+    margin-top: 8px;
+    color: #704653;
+}
+
+/* NAVIGATION */
+nav {
+    background-color: #713b4d;
+    padding: 16px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 20px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #ffdce2;
+}
+
+/* HOME BANNER */
+.hero {
+    background: linear-gradient(
+        120deg,
+        #f5d7dc,
+        #fff0e9
+    );
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero h2 {
+    font-size: 42px;
+    color: #913e59;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.hero a {
+    display: inline-block;
+    background-color: #a44760;
+    color: white;
+    padding: 14px 30px;
+    text-decoration: none;
+    border-radius: 25px;
+}
+
+.hero a:hover {
+    background-color: #713b4d;
+}
+
+/* SECTIONS */
+section {
+    padding: 55px 25px;
+    text-align: center;
+}
+
+section h2 {
+    color: #913e59;
+    font-size: 30px;
+    margin-bottom: 25px;
+}
+
+/* CATEGORIES */
+#categories {
+    background-color: #fff0ed;
+}
+
+#categories p {
+    font-size: 18px;
+    line-height: 2;
+}
+
+/* PRODUCTS */
+#products {
+    background-color: #fff9f7;
+    min-height: 250px;
+}
+
+#product-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* CONTACT */
+#contact {
+    background-color: #f3dadd;
+}
+
+/* FOOTER */
+footer {
+    background-color: #713b4d;
+    color: white;
+    text-align: center;
+    padding: 22px;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 650px) {
+
+    header h1 {
+        font-size: 30px;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 8px;
+        font-size: 14px;
+    }
+
+    .hero {
+        padding: 65px 15px;
+    }
+
+    .hero h2 {
+        font-size: 30px;
+    }
+
+    #product-list {
+        grid-template-columns: 1fr;
+    }
+}
