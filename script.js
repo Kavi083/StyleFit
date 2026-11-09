@@ -87,10 +87,31 @@ document.getElementById("category-filter")
         displayProducts();
     });
 
+// DISPLAY FILTERED PRODUCTS
+
 function displayProducts() {
     productList.innerHTML = "";
 
-    products.forEach(product => {
+    const filteredProducts = products.filter(product => {
+
+        const matchesCategory =
+            selectedCategory === "All" ||
+            product.category === selectedCategory;
+
+        const matchesSearch =
+            product.name.toLowerCase().includes(searchText);
+
+        return matchesCategory && matchesSearch;
+    });
+
+    if (filteredProducts.length === 0) {
+        productList.innerHTML =
+            "<p>No dresses found!</p>";
+        return;
+    }
+
+    filteredProducts.forEach(product => {
+
         const productCard = document.createElement("div");
         productCard.className = "product-card";
 
@@ -99,6 +120,7 @@ function displayProducts() {
             <h3>${product.name}</h3>
             <p>${product.category}</p>
             <h4>₹${product.price}</h4>
+
             <button onclick="addToCart(${product.id})">
                 Add to Cart
             </button>
