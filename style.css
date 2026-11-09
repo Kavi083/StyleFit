@@ -232,3 +232,48 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+/* SEARCH AND CATEGORY FILTER */
+
+.filter-section {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 25px auto;
+    padding: 10px;
+    flex-wrap: wrap;
+}
+
+.filter-section input,
+.filter-section select {
+    padding: 12px 18px;
+    border: 1px solid #d9a5b1;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+}
+
+.filter-section input {
+    width: 280px;
+}
+
+.filter-section select {
+    background-color: white;
+    color: #713b4d;
+}
+
+.filter-section input:focus,
+.filter-section select:focus {
+    border-color: #a44760;
+}
+
+@media (max-width: 650px) {
+    .filter-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .filter-section input,
+    .filter-section select {
+        width: 90%;
+    }
+}
