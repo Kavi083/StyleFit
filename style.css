@@ -277,3 +277,30 @@ footer {
         width: 90%;
     }
 }
+/* WISHLIST DESIGN */
+
+.wishlist-section {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 25px;
+    background-color: #fff0ed;
+    border-radius: 12px;
+    text-align: center;
+}
+
+#wishlist-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 25px;
+}
+
+.wishlist-section h2 {
+    color: #913e59;
+}
+
+@media (max-width: 650px) {
+    #wishlist-items {
+        grid-template-columns: 1fr;
+    }
+}
