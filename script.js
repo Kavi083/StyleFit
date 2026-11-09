@@ -47,6 +47,9 @@ const products = [
 
 // CART ARRAY
 let cart = [];
+// WISHLIST ARRAY
+
+let wishlist = [];
 
 // DISPLAY PRODUCTS
 const productList = document.getElementById("product-list");
@@ -124,6 +127,9 @@ function displayProducts() {
             <button onclick="addToCart(${product.id})">
                 Add to Cart
             </button>
+            <button onclick="toggleWishlist(${product.id})">
+    ❤️ Wishlist
+</button>
         `;
 
         productList.appendChild(productCard);
@@ -197,7 +203,75 @@ function removeFromCart(productId) {
 
     updateCart();
 }
+// ADD OR REMOVE FROM WISHLIST
 
+function toggleWishlist(productId) {
+
+    const selectedProduct = products.find(
+        product => product.id === productId
+    );
+
+    const existingProduct = wishlist.find(
+        item => item.id === productId
+    );
+
+    if (existingProduct) {
+
+        wishlist = wishlist.filter(
+            item => item.id !== productId
+        );
+
+        alert("Dress removed from Wishlist!");
+
+    } else {
+
+        wishlist.push(selectedProduct);
+
+        alert("Dress added to Wishlist!");
+    }
+
+    displayWishlist();
+}
+
+// DISPLAY WISHLIST
+
+function displayWishlist() {
+
+    const wishlistItems =
+        document.getElementById("wishlist-items");
+
+    wishlistItems.innerHTML = "";
+
+    if (wishlist.length === 0) {
+        wishlistItems.innerHTML =
+            "<p>Your Wishlist is empty!</p>";
+        return;
+    }
+
+    wishlist.forEach(item => {
+
+        const wishlistCard = document.createElement("div");
+
+        wishlistCard.className = "product-card";
+
+        wishlistCard.innerHTML = `
+            <img src="${item.image}" alt="${item.name}">
+            <h3>${item.name}</h3>
+            <p>${item.category}</p>
+            <h4>₹${item.price}</h4>
+
+            <button onclick="addToCart(${item.id})">
+                Add to Cart
+            </button>
+
+            <button onclick="toggleWishlist(${item.id})">
+                Remove ❤️
+            </button>
+        `;
+
+        wishlistItems.appendChild(wishlistCard);
+    });
+}
 // CREATE CART SECTION
 const productsSection = document.getElementById("products");
 
@@ -209,7 +283,18 @@ productsSection.insertAdjacentHTML("beforeend", `
         <h3>Total: ₹<span id="cart-total">0</span></h3>
     </div>
 `);
+// CREATE WISHLIST SECTION
 
+productsSection.insertAdjacentHTML("beforeend", `
+    <div class="wishlist-section">
+
+        <h2>My Wishlist ❤️</h2>
+
+        <div id="wishlist-items"></div>
+
+    </div>
+`);
 // LOAD PRODUCTS
 displayProducts();
 updateCart();
+displayWishlist();
